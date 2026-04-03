@@ -1,6 +1,11 @@
 <h1 class="text-3xl font-bold font-montserrat">Todos los productos</h1>
 <h2 class="text-xl">Para todos los gustos</h2>
 
+<pagination
+  [pages]="productsResource.value()?.pages ?? 0"
+  [currentPage]="paginationService.currentPage()"
+/>
+
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-2 gap-6">
   @for (product of productsResource.value()?.products; track $index) {
     <card [product]="product" />

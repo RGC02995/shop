@@ -1,7 +1,7 @@
 <div class="navbar bg-base-100 shadow-sm">
   <div class="navbar-start">
     <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost hover:bg-gray-600 lg:hidden">
+      <div tabindex="-1" role="button" class="btn btn-ghost hover:bg-gray-600 lg:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
@@ -18,14 +18,15 @@
         </svg>
       </div>
       <ul
-        tabindex="-1"
-        class="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-3 w-52 p-2 shadow"
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-300 rounded-box mt-3 w-52 p-2 shadow"
       >
         <li>
           <a
             routerLink="/gender/men"
             class="btn btn-ghost hover:bg-gray-600"
             routerLinkActive="text-secondary"
+            (click)="closeMenu()"
             >Men</a
           >
         </li>
@@ -34,10 +35,13 @@
             routerLink="/gender/women"
             class="btn btn-ghost hover:bg-gray-600"
             routerLinkActive="text-secondary"
+            (click)="closeMenu()"
             >Women</a
           >
         </li>
-        <li><a class="btn btn-ghost hover:bg-gray-600" routerLink="/">Kids</a></li>
+        <li>
+          <a class="btn btn-ghost hover:bg-gray-600" routerLink="/" (click)="closeMenu()">Kids</a>
+        </li>
       </ul>
     </div>
     <a class="btn btn-ghost text-xl"

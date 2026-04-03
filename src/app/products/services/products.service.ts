@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Product, ProductsResponse } from '../interfaces/product.interface';
+import { Gender, Product, ProductsResponse } from '../interfaces/product.interface';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';

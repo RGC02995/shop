@@ -6,6 +6,10 @@
     dark --prefersdark;
 }
 
+/* styles.css */
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
 @theme {
   --font-montserrat: 'Montserrat-Medium', sans-serif;
 }

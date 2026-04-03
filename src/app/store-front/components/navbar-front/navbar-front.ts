@@ -6,4 +6,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar-front.html',
 })
-export class NavbarFront {}
+export class NavbarFront {
+  closeMenu(): void {
+    (document.activeElement as HTMLElement)?.blur();
+  }
+}
