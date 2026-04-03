@@ -8,7 +8,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     <div>
       <img
-        [src]="product.images | productImage"
+        [src]="product.images[0] | productImage"
         [alt]="product.title"
         class="w-full h-auto rounded-lg shadow-lg"
       />

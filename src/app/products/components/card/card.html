@@ -9,7 +9,12 @@
     />
   </figure>
   <div class="card-body">
-    <h2 class="card-title text-accent font-thin text-lg hover:underline">{{ product().title }}</h2>
+    <h2
+      class="card-title text-accent font-thin text-lg hover:underline cursor-pointer"
+      [routerLink]="['/product', product().slug]"
+    >
+      {{ product().title }}
+    </h2>
     <p class="font-thin">{{ product().description | slice: 0 : 70 }}...</p>
     <div class="card-actions justify-end">
       <a [routerLink]="['/product', product().slug]" class="btn btn-primary cursor-pointer"
