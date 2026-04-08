@@ -14,6 +14,8 @@ export interface Options {
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
   private http = inject(HttpClient);
+  private productsCache = new Map<string, ProductsResponse>();
+  private productCache = new Map<string, Product>();
 
   baseUrl = environment.baseUrl;
 
@@ -33,5 +35,35 @@ export class ProductsService {
 
   getProductByIdSlug(idSlug: string): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl}/products/${idSlug}`);
+  }
+
+  getProductById(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
+  }
+
+  updateProduct(id: string, productLike: Partial<Product>): Observable<Product> {
+    return this.http
+      .patch<Product>(`${this.baseUrl}/products/${id}`, productLike)
+      .pipe(tap((product) => this.updateProductCache(product)));
+  }
+
+  createProduct(productLike: Partial<Product>): Observable<Product> {
+    return this.http
+      .post<Product>(`${this.baseUrl}/products`, productLike)
+      .pipe(tap((product) => this.updateProductCache(product)));
+  }
+
+  updateProductCache(product: Product) {
+    const productId = product.id;
+
+    this.productCache.set(productId, product);
+
+    this.productsCache.forEach((productResponse) => {
+      productResponse.products = productResponse.products.map((currentProduct) =>
+        currentProduct.id === productId ? product : currentProduct,
+      );
+    });
+
+    console.log('Caché actualizado');
   }
 }

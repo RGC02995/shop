@@ -15,7 +15,7 @@ export const adminDashBoardRoutes: Routes = [
         component: ProductsAdminPage,
       },
       {
-        path: 'product/:id',
+        path: 'products/:id',
         component: ProductAdminPage,
       },
       {
